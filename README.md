@@ -27,4 +27,23 @@ gradle build
 gradle run --args="/usr/share/elasticsearch/config"
 ```
 
+Alternate Usage
+===============
 
+To run this tool without gradle or git or anything other than Java, (requires at least java 11)
+
+1 - Take the ElasticKeyViewer.java file : https://raw.githubusercontent.com/spectriclabs/elastic-keyview/master/src/main/java/com/spectric/ElasticKeyViewer.java
+and save it locally  e.g. /test/ElasticKeyViewer.java
+
+2 - Copy the following jar files from your Elasticsearch installation into the /test directory (assuming a 7.10.2 installation)
+elasticsearch-7.10.2.jar
+elasticsearch-cli-7.10.2.jar
+elasticsearch-x-content-7.10.2.jar
+elasticsearch-core-7.10.2.jar
+lucene-core-8.7.0.jar
+
+3 - From the test directory, run:
+`java -cp ./elasticsearch-7.10.2.jar:./lucene-core-8.7.0.jar:./elasticsearch-cli-7.10.2.jar:./elasticsearch-x-content-7.10.2.jar:./elasticsearch-core-7.10.2.jar ElasticKeyViewer.java`
+
+E.g:
+`java -cp ./elasticsearch-7.10.2.jar:./lucene-core-8.7.0.jar:./elasticsearch-cli-7.10.2.jar:./elasticsearch-x-content-7.10.2.jar:./elasticsearch-core-7.10.2.jar ElasticKeyViewer.java /elasticsearch/config my_password`
